@@ -1,0 +1,1 @@
+This code demonstrate a small working behing how call-back hell is created, how they might be usefull to avoid redundancy and improve efficiency, along with how they might be complicated to understand if implemented on a large scale & in bigger applications.
