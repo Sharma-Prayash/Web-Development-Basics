@@ -46,8 +46,8 @@ changeColor("red", 1000, () => {
 
 //=====--CALL BACK HELL - 2=================
 
-function save(data, success, failure) {
-    let random = Math.floor(Math.random() * 10) + 1;
+function save(data, success, failure) {                 //THIS PORTION OF CODE IS SYNCHRONOUS WHILE THE FUNCTION CALL FOR THIS FUNCTION IS ASYNCHROUNOUS
+    let random = Math.floor(Math.random() * 10) + 1;    //TO MAKE THIS FUNCITON ASYNC, WE CAN INSERT A FUNCTION LIKE 'setTimeout' INSIDE THIS FUNCTION
 
     if (random > 5) {
         console.log("DATA: ", data);
