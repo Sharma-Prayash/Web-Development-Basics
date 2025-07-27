@@ -25,20 +25,50 @@ h1 = document.querySelector('h1');
 //===NOW WE ARE GONNA DO THIS TASK USING THE CONCEPT OF CALL-BACK HELL=====
 
 function changeColor(color, delay, nextColor) {
-    setTimeout ( ()=>{
+    setTimeout(() => {
         h1.style.color = color;
-        if(nextColor) nextColor();
+        if (nextColor) nextColor();
     }, delay);
 }
 
-changeColor("red", 1000, ()=>{
-    changeColor("blue", 1000, ()=>{
-        changeColor("green", 1000, ()=>{
-            changeColor("yellow", 1000, ()=>{
-                changeColor("pink", 1000, ()=>{
+changeColor("red", 1000, () => {
+    changeColor("blue", 1000, () => {
+        changeColor("green", 1000, () => {
+            changeColor("yellow", 1000, () => {
+                changeColor("pink", 1000, () => {
                     changeColor("purple", 1000);
                 });
             });
         });
     });
+});
+
+
+//=====--CALL BACK HELL - 2=================
+
+function save(data, success, failure) {
+    let random = Math.floor(Math.random() * 10) + 1;
+
+    if (random > 5) {
+        console.log("DATA: ", data);
+        success();
+    } else {
+        failure();
+    }
+}
+
+save("kshitij sharma", () => {
+    console.log("Data1 saved successfully.");
+    save("prayash sharma", () => {
+        console.log("Data2 saved successfully.")
+        save("mahi sharma", () => {
+            console.log("Data3 saved successfully");
+        }, () => {
+            console.log("Fatal Exception: Data can't be saved.");
+        });
+    }, () => {
+        console.log("Fata Exception: Data can't be saved.");
+    });
+}, () => {
+    console.log("Fatal Exception: Data can't be saved.");
 });
